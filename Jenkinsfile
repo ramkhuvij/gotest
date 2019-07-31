@@ -1,6 +1,15 @@
 pipeline {
     agent { docker { image 'golang' } }
+    environment {
+        DISABLE_AUTH = 'true'
+        DB_ENGINE    = 'sqlite'
+    }
     stages {
+        stage('Print Env'){
+            steps {
+                sh 'printenv'
+            }
+        }
         stage('Test') {
             steps {
                 sh 'echo "Fail!"; exit 0'
