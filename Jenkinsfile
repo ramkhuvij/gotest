@@ -16,7 +16,7 @@ node {
     }
 
     stage('login to docker hub'){
-        step{
+        steps {
             sh 'docker login registry.hub.docker.com'
         }
     }
