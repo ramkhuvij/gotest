@@ -15,6 +15,11 @@ node {
         }
     }
 
+    stage('login to docker hub'){
+        step{
+            sh 'docker login registry.hub.docker.com'
+        }
+    }
     stage('push image'){
         docker.withRegistry('https://registry.hub.docker.com','docker-hub-credential'){
             app.push("${env.BUILD_NUMBER}")
