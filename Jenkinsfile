@@ -6,7 +6,7 @@ node {
     }
 
     stage('Build docker image'){
-        app = docker.build("ramkhuvij/version1")
+        app = docker.build("ramkhuvij/gotest")
     }
 
     stage('Test image'){
@@ -17,7 +17,8 @@ node {
    
     stage('push image'){
         docker.withRegistry('https://registry.hub.docker.com','docker-hub-credential'){
-            app.push()
+            app.push("${env.BUILD_NUMBER}")
+            app.push("latest")
         }
     }
 }
