@@ -16,9 +16,7 @@ node {
     }
 
     stage('login to docker hub'){
-        steps {
-            sh 'docker login registry.hub.docker.com'
-        }
+        sh 'docker login registry.hub.docker.com'
     }
     stage('push image'){
         docker.withRegistry('https://registry.hub.docker.com','docker-hub-credential'){
