@@ -14,10 +14,7 @@ node {
             sh 'echo "test passed"'
         }
     }
-
-    stage('login to docker hub'){
-        sh 'docker login registry.hub.docker.com'
-    }
+   
     stage('push image'){
         docker.withRegistry('https://registry.hub.docker.com','docker-hub-credential'){
             app.push()
